@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -17,12 +18,18 @@ namespace Wpf_Pr_7._1
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
+    ///  Метод DoubleAnimation создаёт анимированние для кнопки
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            DoubleAnimation buttonAnimation = new DoubleAnimation();
+            buttonAnimation.From = Proba.ActualWidth;
+            buttonAnimation.To = 212;
+            buttonAnimation.Duration = TimeSpan.FromSeconds(1.5);
+            Proba.BeginAnimation(Button.WidthProperty, buttonAnimation);
         }
 
         private void Feather(object sender, RoutedEventArgs e)
